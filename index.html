@@ -1,4 +1,4 @@
-<!-- Version 1.0 — Jeu de devine le nombre -->
+<!-- Version 2.0 — Jeu de devine le nombre -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,6 +11,14 @@
     <title>Nombre mystère</title>
 </head>
 <body>
+    <div id="menu-difficulte">
+        <label for="niveau">Choisissez la difficulté :</label>
+        <select id="niveau">
+        <option value="facile">Facile ( 1 - 10, 5 essais)</option>
+        <option value="moyen">Moyen ( 1 - 100, 3 essais)</option>
+        <option value="difficile">Difficile ( 1 - 1000, 1 essai)</option>
+        </select>
+    </div>
     <h1 id="titre">jeu de devine le nombre</h1>
     <div id="zone-saisie">
         <input type="number" name="num" id="num-saisie" placeholder="Devinez un nombre entre 1 et 10" />

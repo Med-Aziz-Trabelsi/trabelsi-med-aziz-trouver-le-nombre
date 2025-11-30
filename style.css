@@ -1,4 +1,4 @@
-/* Version 1.0 — Jeu de devine le nombre */
+/* Version 2.0 — Jeu de devine le nombre */
 body {
     margin: 0;
     padding: 0;
@@ -46,4 +46,25 @@ body {
 #message {
   margin-top: 20px;
   font-size: 1.3rem;
+}
+
+#menu-difficulte {
+  color: violet;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+#niveau {
+  width: 220px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: grey;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
 }

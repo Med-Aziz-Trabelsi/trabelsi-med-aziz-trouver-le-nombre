@@ -1,39 +1,73 @@
-//Version 1.0 — Jeu de devine le nombre
-// Génère un nombre aléatoire entre 1 et 10
-const nombreMystere = Math.floor(Math.random() * 10) + 1;
+// Version 2.0 — Ajout du menu de difficulté
 
-// Récupère les éléments du DOM
-const saisie = document.getElementById("num-saisie");
+const input = document.getElementById("num-saisie");
 const bouton = document.getElementById("submit-btn");
 const message = document.getElementById("message");
+const niveauSelect = document.getElementById("niveau");
 
-// Fonction de vérification
+let nombreMystere;
+let essaisRestants;
+let max;
+
+// Fonction pour initialiser le jeu selon la difficulté
+function initialiserJeu() {
+  const niveau = niveauSelect.value;
+
+  if (niveau === "facile") {
+    max = 10;
+    essaisRestants = 5;
+  } else if (niveau === "moyen") {
+    max = 100;
+    essaisRestants = 3;
+  } else {
+    max = 1000;
+    essaisRestants = 1;
+  }
+
+  nombreMystere = Math.floor(Math.random() * max) + 1;
+  message.textContent = `Le jeu commence ! Vous avez ${essaisRestants} essai(s).`;
+  message.style.color = "white";
+  input.value = "";
+}
+
+// Vérifie la saisie
 function verifierNombre() {
-  const valeur = parseInt(saisie.value);
+  const valeur = parseInt(input.value);
 
-  // Vérifie si la saisie est valide
-  if (isNaN(valeur) || valeur < 1 || valeur > 10) {
-    message.textContent = "Veuillez entrer un nombre entre 1 et 10 !";
+  if (isNaN(valeur) || valeur < 1 || valeur > max) {
+    message.textContent = `Entrez un nombre entre 1 et ${max}.`;
     message.style.color = "orange";
     return;
   }
 
-  // Compare avec le nombre mystère
+  essaisRestants--;
+
   if (valeur === nombreMystere) {
     message.textContent = "Bravo ! Vous avez deviné le bon nombre.";
     message.style.color = "lime";
-  } else {
-    message.textContent = "Raté ! Essayez encore.";
+    bouton.disabled = true;
+    input.disabled = true;
+  } else if (essaisRestants > 0) {
+    message.textContent = `Mauvais nombre. Il vous reste ${essaisRestants} essai(s).`;
     message.style.color = "red";
+  } else {
+    message.textContent = `Partie terminée ! Le nombre était ${nombreMystere}.`;
+    message.style.color = "gray";
+    bouton.disabled = true;
+    input.disabled = true;
   }
 }
 
-// Écouteur sur le bouton
+// Événements
 bouton.addEventListener("click", verifierNombre);
-
-// Écouteur sur la touche Entrée
-saisie.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    verifierNombre();
-  }
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") verifierNombre();
 });
+niveauSelect.addEventListener("change", () => {
+  bouton.disabled = false;
+  input.disabled = false;
+  initialiserJeu();
+});
+
+// Lancement initial
+initialiserJeu
