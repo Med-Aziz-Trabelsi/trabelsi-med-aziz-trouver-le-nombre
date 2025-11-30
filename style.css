@@ -1,0 +1,49 @@
+/* Version 1.0 — Jeu de devine le nombre */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Bruno Ace SC', 'Segoe UI', serif;
+    display: flex;
+    flex-direction: column;     /* Organise les éléments verticalement */
+    align-items: center;        /* Centre les éléments horizontalement */
+    justify-content: flex-start; /* Aligne les éléments en haut de la page */
+    padding-top: 25vh;           /* Décale le contenu vers le bas (1/4 de la hauteur) */
+    height: 100vh;               /* Hauteur égale à celle de la fenêtre */
+    background: #000 url(images/background.png) no-repeat center center / cover;
+    background-attachment: fixed;
+    overflow: hidden;           /* bloque le défilement de la page */
+}
+#titre {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: rgb(211, 61, 35);
+}
+#zone-saisie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#num-saisie {
+  padding: 10px;
+  font-size: 1rem;
+  width: 250px;
+  border-radius: 15px;
+  border: none;
+}
+
+#submit-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #43a046;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;           /* Change le curseur en main lors du survol, indiquant que le bouton est cliquable */
+}
+
+#message {
+  margin-top: 20px;
+  font-size: 1.3rem;
+}
