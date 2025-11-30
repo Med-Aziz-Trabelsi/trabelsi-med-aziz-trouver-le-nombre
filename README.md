@@ -22,7 +22,16 @@ Création du Jeu “Trouver le nombre” en utilisant HTML / CSS / JS .
   - Uniformisation des styles pour une interface plus agréable
 
 
-  
+
+## 🔗 Liens de rendu
+
+- 📁 [Dépôt GitHub](https://github.com/Med-Aziz-Trabelsi/trabelsi-med-aziz-trouver-le-nombre)
+- 🌐 [Version finale hébergée sur GitHub Pages](https://med-aziz-trabelsi.github.io/trabelsi-med-aziz-trouver-le-nombre/)
+
+
+
+
+
 ## Historique Git
 Ce projet suit une progression en 5 versions via Git.
 
