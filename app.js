@@ -1,15 +1,17 @@
-// Version 2.0 — Ajout du menu de difficulté
+// Version 3.0 — Ajout d'indices (plus grand / plus petit)
 
 const input = document.getElementById("num-saisie");
 const bouton = document.getElementById("submit-btn");
 const message = document.getElementById("message");
 const niveauSelect = document.getElementById("niveau");
+const indiceBtn = document.getElementById("indice-btn");
+const indiceMessage = document.getElementById("indice-message");
 
 let nombreMystere;
 let essaisRestants;
 let max;
+let dernierInput = null; // pour stocker la dernière saisie
 
-// Fonction pour initialiser le jeu selon la difficulté
 function initialiserJeu() {
   const niveau = niveauSelect.value;
 
@@ -28,9 +30,10 @@ function initialiserJeu() {
   message.textContent = `Le jeu commence ! Vous avez ${essaisRestants} essai(s).`;
   message.style.color = "white";
   input.value = "";
+  indiceMessage.textContent = ""; // reinitialize message d'indice
+  dernierInput = null;
 }
 
-// Vérifie la saisie
 function verifierNombre() {
   const valeur = parseInt(input.value);
 
@@ -40,6 +43,7 @@ function verifierNombre() {
     return;
   }
 
+  dernierInput = valeur; // sauvegarder la dernière tentative
   essaisRestants--;
 
   if (valeur === nombreMystere) {
@@ -47,6 +51,7 @@ function verifierNombre() {
     message.style.color = "lime";
     bouton.disabled = true;
     input.disabled = true;
+    indiceBtn.disabled = true;
   } else if (essaisRestants > 0) {
     message.textContent = `Mauvais nombre. Il vous reste ${essaisRestants} essai(s).`;
     message.style.color = "red";
@@ -55,10 +60,27 @@ function verifierNombre() {
     message.style.color = "gray";
     bouton.disabled = true;
     input.disabled = true;
+    indiceBtn.disabled = true;
+  }
+}
+// Nouvelle fonction pour donner un indice
+function donnerIndice() {
+  if (dernierInput === null) {
+    indiceMessage.textContent = "Faites une première tentative avant de demander un indice.";
+    indiceMessage.style.color = "orange";
+    return;
+  }
+
+  if (dernierInput < nombreMystere) {
+    indiceMessage.textContent = "Indice : Le nombre mystère est PLUS GRAND.";
+    indiceMessage.style.color = "aqua";
+  } else if (dernierInput > nombreMystere) {
+    indiceMessage.textContent = "Indice : Le nombre mystère est PLUS PETIT.";
+    indiceMessage.style.color = "aqua";
   }
 }
 
-// Événements
+// evenements
 bouton.addEventListener("click", verifierNombre);
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") verifierNombre();
@@ -66,8 +88,10 @@ input.addEventListener("keydown", (e) => {
 niveauSelect.addEventListener("change", () => {
   bouton.disabled = false;
   input.disabled = false;
+  indiceBtn.disabled = false;
   initialiserJeu();
 });
+indiceBtn.addEventListener("click", donnerIndice);
 
-// Lancement initial
-initialiserJeu
+// initialiser le jeu au chargement
+initialiserJeu();

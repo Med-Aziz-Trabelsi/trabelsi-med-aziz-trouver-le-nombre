@@ -22,6 +22,13 @@ Création du Jeu “Trouver le nombre” en utilisant HTML / CSS / JS .
   - Uniformisation des styles pour une interface plus agréable
 
 
+### ✅ Version 3.0
+- Ajout du bouton **Indice** :
+  - Indique si le nombre mystère est plus grand ou plus petit que la dernière saisie
+- Amélioration du design :
+  - Boutons alignés sur une même ligne
+  - Effets de hover sur le menu de difficulté
+  - Couleurs plus claires pour les messages et indices
 
 ## 🔗 Liens de rendu
 
