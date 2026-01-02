@@ -148,3 +148,59 @@ body {
   transform: scale(1.05);
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
 }
+
+
+
+/* Petits écrans (smartphones ≤ 600px) */
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  #score-container {
+    position: static;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+  }
+
+
+  #reset-score-btn {
+    display: block;
+    margin: 10px auto;
+    width: 90%;
+    font-size: 0.95rem;
+  }
+  #submit-btn, #indice-btn {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+
+  #niveau {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  #message, #indice-message {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  input[type="number"] {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
