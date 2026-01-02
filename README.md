@@ -30,6 +30,19 @@ Création du Jeu “Trouver le nombre” en utilisant HTML / CSS / JS .
   - Effets de hover sur le menu de difficulté
   - Couleurs plus claires pour les messages et indices
 
+
+### ✅ Version 4.0
+- Ajout du **système de score** :
+  - Score calculé en fonction des essais restants
+  - Affichage du score actuel en haut à droite
+- Sauvegarde du **meilleur score** avec `localStorage`
+- Bouton **Réinitialiser le meilleur score**
+- Amélioration CSS :
+  - Boîte de score en haut à droite avec fond semi-transparent
+  - Texte doré et effet hover sur le bouton de réinitialisation
+
+
+
 ## 🔗 Liens de rendu
 
 - 📁 [Dépôt GitHub](https://github.com/Med-Aziz-Trabelsi/trabelsi-med-aziz-trouver-le-nombre)
