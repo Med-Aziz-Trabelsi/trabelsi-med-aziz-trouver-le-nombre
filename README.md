@@ -41,6 +41,11 @@ Création du Jeu “Trouver le nombre” en utilisant HTML / CSS / JS .
   - Boîte de score en haut à droite avec fond semi-transparent
   - Texte doré et effet hover sur le bouton de réinitialisation
 
+  
+##  Version 5.0 
+- Ajout de media queries pour rendre le jeu responsive
+- Adaptation automatique aux petits écrans (smartphones)
+- Boutons et champs élargis, texte centré
 
 
 ## 🔗 Liens de rendu
