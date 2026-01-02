@@ -1,4 +1,4 @@
-// Version 3.0 — Ajout d'indices (plus grand / plus petit)
+// Version 4.0 — Ajout du système de score et sauvegarde du meilleur score
 
 const input = document.getElementById("num-saisie");
 const bouton = document.getElementById("submit-btn");
@@ -6,11 +6,15 @@ const message = document.getElementById("message");
 const niveauSelect = document.getElementById("niveau");
 const indiceBtn = document.getElementById("indice-btn");
 const indiceMessage = document.getElementById("indice-message");
+const scoreDisplay = document.getElementById("score");        //  affichage du score
+const bestScoreDisplay = document.getElementById("best-score"); // affichage du meilleur score
 
 let nombreMystere;
 let essaisRestants;
 let max;
 let dernierInput = null; // pour stocker la dernière saisie
+let score = 0;           // score actuel
+let bestScore = localStorage.getItem("bestScore") || 0; // meilleur score sauvegardé
 
 function initialiserJeu() {
   const niveau = niveauSelect.value;
@@ -30,8 +34,11 @@ function initialiserJeu() {
   message.textContent = `Le jeu commence ! Vous avez ${essaisRestants} essai(s).`;
   message.style.color = "white";
   input.value = "";
-  indiceMessage.textContent = ""; // reinitialize message d'indice
+  indiceMessage.textContent = ""; // réinitialiser le message d'indice
   dernierInput = null;
+  score = 0; // réinitialiser le score
+  scoreDisplay.textContent = `Score actuel : ${score}`;
+  bestScoreDisplay.textContent = `Meilleur score : ${bestScore}`;
 }
 
 function verifierNombre() {
@@ -47,8 +54,18 @@ function verifierNombre() {
   essaisRestants--;
 
   if (valeur === nombreMystere) {
-    message.textContent = "Bravo ! Vous avez deviné le bon nombre.";
+    // calcul du score : basé sur essais restants
+    score = essaisRestants + 1;
+    message.textContent = `Bravo ! Vous avez deviné le bon nombre. Score : ${score}`;
     message.style.color = "lime";
+
+    // mise à jour du meilleur score
+    if (score > bestScore) {
+      bestScore = score;
+      localStorage.setItem("bestScore", bestScore);
+      bestScoreDisplay.textContent = `Meilleur score : ${bestScore}`;
+    }
+
     bouton.disabled = true;
     input.disabled = true;
     indiceBtn.disabled = true;
@@ -62,8 +79,11 @@ function verifierNombre() {
     input.disabled = true;
     indiceBtn.disabled = true;
   }
+
+  scoreDisplay.textContent = `Score actuel : ${score}`;
 }
-// Nouvelle fonction pour donner un indice
+
+// fonction pour donner un indice
 function donnerIndice() {
   if (dernierInput === null) {
     indiceMessage.textContent = "Faites une première tentative avant de demander un indice.";
@@ -80,7 +100,7 @@ function donnerIndice() {
   }
 }
 
-// evenements
+// événements
 bouton.addEventListener("click", verifierNombre);
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter") verifierNombre();
@@ -92,6 +112,15 @@ niveauSelect.addEventListener("change", () => {
   initialiserJeu();
 });
 indiceBtn.addEventListener("click", donnerIndice);
+
+const resetBtn = document.getElementById("reset-score-btn");
+
+resetBtn.addEventListener("click", () => {
+  localStorage.removeItem("bestScore");
+  bestScore = 0;
+  bestScoreDisplay.textContent = `Meilleur score : ${bestScore}`;
+  alert("Le meilleur score a été réinitialisé !");
+});
 
 // initialiser le jeu au chargement
 initialiserJeu();

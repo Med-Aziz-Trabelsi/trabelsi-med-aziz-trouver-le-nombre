@@ -109,3 +109,42 @@ body {
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+#score-container {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  text-align: right;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  color: gold;
+  font-weight: bold;
+  font-size: 1.1rem;
+  z-index: 1000;
+}
+
+#score-container p {
+  margin: 5px 0;
+  text-align: center;
+}
+#reset-score-btn {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+#reset-score-btn:hover {
+  background-color: #ff2222;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
